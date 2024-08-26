@@ -1,41 +1,41 @@
 'use client'
 
 import { useState } from "react";
-import DeleteButton from "./DeleteButton";
 import AddUser from "./AddUser";
+import Row from "./Row";
+
+import type { NewUser, NewUsers } from "@/types/user";
 
 interface TableProps {
     newUsers: NewUsers;
-    setState: React.Dispatch<React.SetStateAction<NewUser[]>>;
+    //setState: React.Dispatch<React.SetStateAction<NewUser[]>>;
 }
 
-interface NewUser {
-    new_user_id: number;
-    first_name: string;
-    last_name: string;
-    start_date: string;
-    department: string;
-    role: string;
-};
-
-interface NewUsers {
-    newUsers: NewUser[]
-};
 
 export function Table({ newUsers }: NewUsers) {
     const [newUserData, setNewUserData] = useState(newUsers)
-    //console.log(newUserData)
     return (
-        <>
-        {newUserData.map(newUser => {
-            return (
-                <div key={newUser.new_user_id} className='flex gap-2'>
-                <div>{newUser.first_name + ' ' + newUser.last_name}</div>
-                <DeleteButton id={newUser.new_user_id} setState={setNewUserData} />
-              </div>
-            )
-        })}
-        <AddUser />
-        </>
+        <div className="flex flex-col gap-2 w-full">
+            <div className="w-full bg-red-900 flex justify-between gap-2 border-2 border-white border-solid">
+                <p>First Name</p>
+                <p>Last Name</p>
+                <p>E-mail</p>
+                <p>Dept</p>
+                <p>Role</p>
+                <p>Toggle Edit</p>
+            </div>
+            {newUserData.map(newUser => {
+                return (
+                        <Row 
+                        newUser={newUser} 
+                        setNewUserData={setNewUserData} 
+                        key={newUser.new_user_id}
+                        />
+                )
+            })}
+        </div>
     )
 }
+/*
+<AddUser />
+*/

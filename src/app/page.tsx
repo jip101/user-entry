@@ -15,7 +15,7 @@ console.log(cookies().get('authorization'))
   //console.log(data)
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center gap-2 p-24">
+      <main className="flex min-h-screen flex-col items-center gap-4 p-12">
         <Table newUsers={data}/>
       </main>
     </>
