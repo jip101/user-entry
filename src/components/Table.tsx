@@ -22,6 +22,7 @@ export function Table({ newUsers }: NewUsers) {
                 <p>E-mail</p>
                 <p>Dept</p>
                 <p>Role</p>
+                <p></p>
                 <p>Toggle Edit</p>
             </div>
             {newUserData.map(newUser => {
